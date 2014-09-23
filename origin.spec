@@ -2,12 +2,12 @@
 %global debug_package %{nil}
 %global gopath      %{_datadir}/gocode
 %global import_path github.com/openshift/origin
-%global commit      2647df5a22e88356905038116a9fc4616e3fa660
+%global commit      6d9f1a93aedc3c5dc89cdd2de726a6302b66def0
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           origin
 Version:        0
-Release:        0.0.2.git%{shortcommit}%{?dist}
+Release:        0.0.3.git%{shortcommit}%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -135,6 +135,9 @@ mkdir -p %{buildroot}/var/log/%{name}
 %{_bindir}/openshift
 
 %changelog
+* Tue Sep 23 2014 Adam Miller <admiller@redhat.com> - 0-0.0.3.git6d9f1a9
+- Update to latest upstream.
+
 * Mon Sep 15 2014 Adam Miller <admiller@redhat.com> - 0-0.0.2.git2647df5
 - Update to latest upstream.
 
