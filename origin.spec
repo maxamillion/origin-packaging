@@ -121,10 +121,10 @@ do
 done
 
 install -d -m 0755 %{buildroot}%{_unitdir}
-install -m 0644 -t %{buildroot}%{_unitdir} %{Source20}
+install -m 0644 -t %{buildroot}%{_unitdir} %{SOURCE20}
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{Source10}
+install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{SOURCE10}
 
 mkdir -p %{buildroot}/var/log/%{name}
 
@@ -136,10 +136,10 @@ mkdir -p %{buildroot}/var/log/%{name}
 %{_unitdir}/*.service
 
 %post
-%systemd_post %{basename:%{Source20}}
+%systemd_post %{basename:%{SOURCE20}}
 
 %preun
-%systemd_preun %{basename:%{Source20}}
+%systemd_preun %{basename:%{SOURCE20}}
 
 %postun
 %systemd_postun
