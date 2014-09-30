@@ -17,6 +17,8 @@ Source0:        https://%{import_path}/archive/%{commit}/%{name}-%{shortcommit}.
 # FIXME - Need to add a -devel subpackage to etcd that provides the golang
 #         libraries/packages, but this will work for now.
 Source1:        etcd-0.4.6.tar.gz
+Source10:       origin
+Source20:       origin.service
 
 BuildRequires:  gcc
 BuildRequires:  git
@@ -118,13 +120,11 @@ do
   install -p -m 755 ${bin} %{buildroot}%{_bindir}/${bin}
 done
 
-#FIXME - at some point we should write a systemd unit file for this
-#install -d -m 0755 %{buildroot}%{_prefix}/lib/systemd/system
-#install -m 0644 -t %{buildroot}%{_prefix}/lib/systemd/system init/%{name}
+install -d -m 0755 %{buildroot}%{_unitdir}
+install -m 0644 -t %{buildroot}%{_unitdir} %{Source20}
 
-#FIXME - should also have a config file for it
-#mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-#install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig sysconfig/%{name}
+mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
+install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{Source10}
 
 mkdir -p %{buildroot}/var/log/%{name}
 
@@ -133,6 +133,16 @@ mkdir -p %{buildroot}/var/log/%{name}
 %doc README.md LICENSE
 %dir /var/log/%{name}
 %{_bindir}/openshift
+%{_unitdir}/*.service
+
+%post
+%systemd_post %{basename:%{Source20}}
+
+%preun
+%systemd_preun %{basename:%{Source20}}
+
+%postun
+%systemd_postun
 
 %changelog
 * Tue Sep 23 2014 Adam Miller <admiller@redhat.com> - 0-0.0.3.git6d9f1a9
