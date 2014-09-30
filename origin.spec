@@ -124,7 +124,7 @@ install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 -t %{buildroot}%{_unitdir} %{SOURCE20}
 
 mkdir -p %{buildroot}%{_sysconfdir}/sysconfig
-install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{SOURCE10}
+install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig %{SOURCE10}
 
 mkdir -p %{buildroot}/var/log/%{name}
 
@@ -134,6 +134,7 @@ mkdir -p %{buildroot}/var/log/%{name}
 %dir /var/log/%{name}
 %{_bindir}/openshift
 %{_unitdir}/*.service
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 
 %post
 %systemd_post %{basename:%{SOURCE20}}
