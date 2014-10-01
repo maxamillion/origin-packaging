@@ -7,7 +7,7 @@
 
 Name:           origin
 Version:        0
-Release:        0.0.4.git%{shortcommit}%{?dist}
+Release:        0.0.5.git%{shortcommit}%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -146,6 +146,9 @@ mkdir -p %{buildroot}/var/log/%{name}
 %systemd_postun
 
 %changelog
+* Wed Oct 01 2014 Adam Miller <admiller@redhat.com> - 0-0.0.5.git6d9f1a9
+- Switch to consistent naming, patch by jhonce
+
 * Tue Sep 30 2014 Adam Miller <admiller@redhat.com> - 0-0.0.4.git6d9f1a9
 - Add systemd and sysconfig entries from jhonce
 
