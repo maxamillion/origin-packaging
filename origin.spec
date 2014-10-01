@@ -134,7 +134,7 @@ mkdir -p %{buildroot}/var/log/%{name}
 %dir /var/log/%{name}
 %{_bindir}/openshift
 %{_unitdir}/*.service
-%config(noreplace) %{_sysconfdir}/sysconfig/%{SOURCE10}
+%config(noreplace) %{_sysconfdir}/sysconfig/openshift
 
 %post
 %systemd_post %{basename:%{SOURCE20}}
