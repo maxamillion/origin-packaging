@@ -17,8 +17,8 @@ Source0:        https://%{import_path}/archive/%{commit}/%{name}-%{shortcommit}.
 # FIXME - Need to add a -devel subpackage to etcd that provides the golang
 #         libraries/packages, but this will work for now.
 Source1:        etcd-0.4.6.tar.gz
-Source10:       origin
-Source20:       origin.service
+Source10:       openshift
+Source20:       openshift.service
 
 BuildRequires:  gcc
 BuildRequires:  git
@@ -134,7 +134,7 @@ mkdir -p %{buildroot}/var/log/%{name}
 %dir /var/log/%{name}
 %{_bindir}/openshift
 %{_unitdir}/*.service
-%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
+%config(noreplace) %{_sysconfdir}/sysconfig/%{SOURCE10}
 
 %post
 %systemd_post %{basename:%{SOURCE20}}
