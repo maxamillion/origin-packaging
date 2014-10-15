@@ -2,12 +2,12 @@
 %global debug_package %{nil}
 %global gopath      %{_datadir}/gocode
 %global import_path github.com/openshift/origin
-%global commit      6d9f1a93aedc3c5dc89cdd2de726a6302b66def0
+%global commit      7872f0f6b76515f69d8aafbcec72a6b18c6c59c1
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:           origin
 Version:        0
-Release:        0.0.5.git%{shortcommit}%{?dist}
+Release:        0.0.7.git%{shortcommit}%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -146,6 +146,12 @@ mkdir -p %{buildroot}/var/log/%{name}
 %systemd_postun
 
 %changelog
+* Wed Oct 15 2014 Adam Miller <admiller@redhat.com> - 0-0.0.7.git7872f0f
+- Update to latest master snapshot
+
+* Fri Oct 03 2014 Adam Miller <admiller@redhat.com> - 0-0.0.6.gite4d4ecf
+- Update to latest Alpha nightly build tag 20141003
+
 * Wed Oct 01 2014 Adam Miller <admiller@redhat.com> - 0-0.0.5.git6d9f1a9
 - Switch to consistent naming, patch by jhonce
 
