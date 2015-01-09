@@ -8,7 +8,7 @@
 Name:           origin
 Version:        0.2
 #Release:        1git%{shortcommit}%{?dist}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Open Source Platform as a Service by Red Hat
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -103,6 +103,9 @@ ln -s %{_bindir}/openshift %{buildroot}%{_bindir}/osc
 %systemd_postun
 
 %changelog
+* Fri Jan 09 2015 Adam Miller <admiller@redhat.com> - 0.2-2
+- Add symlink for osc command line tooling (merged in from jhonce@redhat.com)
+
 * Wed Jan 07 2015 Adam Miller <admiller@redhat.com> - 0.2-1
 - Update to latest upstream release
 - Restructured some of the golang deps  build setup for restructuring done
