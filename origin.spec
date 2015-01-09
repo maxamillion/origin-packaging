@@ -82,11 +82,14 @@ install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig %{SOURCE10}
 
 mkdir -p %{buildroot}/var/log/%{name}
 
+ln -s %{_bindir}/openshift %{buildroot}%{_bindir}/osc
+
 %files
 %defattr(-,root,root,-)
 %doc README.md LICENSE
 %dir /var/log/%{name}
 %{_bindir}/openshift
+%{_bindir}/osc
 %{_unitdir}/*.service
 %config(noreplace) %{_sysconfdir}/sysconfig/openshift
 
