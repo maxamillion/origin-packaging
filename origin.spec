@@ -82,7 +82,7 @@ install -m 0644 -t %{buildroot}%{_sysconfdir}/sysconfig %{SOURCE10}
 
 mkdir -p %{buildroot}/var/log/%{name}
 
-ln -s %{_bindir}/openshift %{_bindir}/osc
+ln -s %{_bindir}/openshift %{buildroot}%{_bindir}/osc
 
 %files
 %defattr(-,root,root,-)
